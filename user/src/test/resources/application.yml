@@ -1,0 +1,7 @@
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+    hostname: localhost
