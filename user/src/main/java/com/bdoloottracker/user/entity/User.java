@@ -1,5 +1,6 @@
 package com.bdoloottracker.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +28,7 @@ public class User implements Serializable {
   private Long id;
   @Column(name = "name", nullable = false, length = 128)
   private String name;
+  @JsonIgnore
   @Column(name = "password", nullable = false, length = 255)
   private String password;
   @Column(name = "email", nullable = false, unique = true, length = 255)
