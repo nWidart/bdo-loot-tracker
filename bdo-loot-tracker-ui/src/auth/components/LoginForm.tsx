@@ -18,8 +18,8 @@ class LoginForm extends React.Component<any, LoginFormState> {
   }
 
   updateUsername = (event: React.FormEvent<HTMLInputElement>) => {
-    const test = event.currentTarget.id as 'username';
-    this.setState({ [test]: event.currentTarget.value });
+    const value = event.currentTarget.id as 'username';
+    this.setState({ [value]: event.currentTarget.value });
   };
 
   handleSubmit = () => {
@@ -106,6 +106,7 @@ class LoginForm extends React.Component<any, LoginFormState> {
 
 const mapDispatchToProps = (dispatch: RematchDispatch<models>) => ({
   login: (payload: any) => dispatch.authentication.login(payload),
+  getCurrentUser: () => dispatch.authentication.getCurrentUser(),
 });
 
 export default connect(null, mapDispatchToProps as any)(LoginForm);
