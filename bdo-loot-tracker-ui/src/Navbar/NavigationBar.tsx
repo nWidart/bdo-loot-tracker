@@ -5,9 +5,7 @@ const NavigationBar = () => (
   <nav className="bg-white shadow" role="navigation">
     <div className="container mx-auto p-4 flex flex-wrap items-center md:flex-no-wrap">
       <div className="mr-4 md:mr-8">
-        <a href="/" rel="home">
-          BDO Loot Tracker
-        </a>
+        <Link to="/">BDO Loot Tracker</Link>
       </div>
       <div className="ml-auto md:hidden">
         <button className="flex items-center px-3 py-2 border rounded" type="button">
@@ -21,7 +19,7 @@ const NavigationBar = () => (
         <ul
           className="flex flex-col mt-4 -mx-4 pt-4 border-t md:flex-row md:items-center md:mx-0 md:ml-auto md:mt-0 md:pt-0 md:border-0">
           <li>
-            <Link to="/" className="block px-4 py-1 md:p-2 lg:px-4 text-purple-600">Spots</Link>
+            <Link to="/spots" className="block px-4 py-1 md:p-2 lg:px-4 text-purple-600">Spots</Link>
           </li>
           <li>
             <Link to="/login" className="block px-4 py-1 md:p-2 lg:px-4">Login</Link>
