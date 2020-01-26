@@ -7,7 +7,7 @@ import './index.css';
 import './tailwind.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { store } from './store';
+import { store } from './app/store';
 import './http/interceptors';
 
 ReactDOM.render(

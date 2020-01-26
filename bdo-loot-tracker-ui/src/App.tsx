@@ -1,7 +1,7 @@
 import React from 'react';
 import NavigationBar from './Navbar/NavigationBar';
-import Content from './app/Content';
-import { routes } from './routes';
+import Content from './app/components/Content';
+import { routes } from './app/routes';
 
 const App: React.FC = () => {
   return (

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import SpotListContainer from './spots/components/SpotListContainer';
-import LoginForm from './auth/components/LoginForm';
-import { Homepage } from './homepage/components/Homepage';
+import SpotListContainer from '../spots/components/SpotListContainer';
+import LoginForm from '../auth/components/LoginForm';
+import { Homepage } from '../homepage/components/Homepage';
 
 const routes = {
   homepage: {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { RematchDispatch, RematchRootState } from '@rematch/core';
 import { Redirect } from 'react-router-dom';
 
-import { models } from '../../store';
+import { models } from '../../app/store';
 
 interface LoginFormState {
   username: string;

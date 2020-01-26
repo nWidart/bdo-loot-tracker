@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RematchDispatch, RematchRootState } from '@rematch/core';
-import { models } from '../../store';
+import { models } from '../../app/store';
 import { connect } from 'react-redux';
 import { Spot } from '../model';
 
