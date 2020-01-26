@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationBar from './Navbar/NavigationBar';
+import NavigationBar from './navbar/components/NavigationBar';
 import Content from './app/components/Content';
 import { routes } from './app/routes';
 
