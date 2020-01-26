@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { RematchDispatch } from '@rematch/core';
+import { RematchDispatch, RematchRootState } from '@rematch/core';
+import { Redirect } from 'react-router-dom';
+
 import { models } from '../../store';
 
 interface LoginFormState {
@@ -22,13 +24,15 @@ class LoginForm extends React.Component<any, LoginFormState> {
     this.setState({ [value]: event.currentTarget.value });
   };
 
-  handleSubmit = () => {
-    this.props.login(this.state).then(() => {
-      window.location.assign('/');
-    });
+  handleSubmit = async () => {
+    await this.props.login(this.state);
+    await this.props.getCurrentUser();
   };
 
   render() {
+    if (this.props.currentUser) {
+      return <Redirect to="/"/>;
+    }
     return (
       <div className="container mx-auto">
         <div className="flex justify-center px-6 my-12">
@@ -104,9 +108,13 @@ class LoginForm extends React.Component<any, LoginFormState> {
   }
 }
 
+const mapStateToProps = (state: RematchRootState<models>) => ({
+  currentUser: state.authentication.user,
+});
+
 const mapDispatchToProps = (dispatch: RematchDispatch<models>) => ({
   login: (payload: any) => dispatch.authentication.login(payload),
   getCurrentUser: () => dispatch.authentication.getCurrentUser(),
 });
 
-export default connect(null, mapDispatchToProps as any)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps as any)(LoginForm);
