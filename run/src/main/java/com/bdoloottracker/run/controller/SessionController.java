@@ -1,0 +1,26 @@
+package com.bdoloottracker.run.controller;
+
+import com.bdoloottracker.run.entity.Session;
+import com.bdoloottracker.run.security.SimpleLoginUser;
+import com.bdoloottracker.run.service.SessionService;
+import java.util.List;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("api/run")
+public class SessionController {
+
+  private final SessionService sessionService;
+
+  public SessionController(SessionService sessionService) {
+    this.sessionService = sessionService;
+  }
+
+  @GetMapping("sessions")
+  public List<Session> getSessions(@AuthenticationPrincipal SimpleLoginUser user) {
+    return sessionService.findAllFor(user);
+  }
+}

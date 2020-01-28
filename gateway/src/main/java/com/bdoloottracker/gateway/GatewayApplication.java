@@ -44,6 +44,11 @@ public class GatewayApplication {
                 .uri("lb://price-service")
                 .id("price-service")
         )
+        .route(
+            r -> r.path("/api/run/**")
+                .uri("lb://run-service")
+                .id("run-service")
+        )
         .build();
   }
 }
