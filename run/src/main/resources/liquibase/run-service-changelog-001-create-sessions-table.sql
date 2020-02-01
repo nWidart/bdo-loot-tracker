@@ -4,7 +4,7 @@
 
 CREATE TABLE IF NOT EXISTS sessions
 (
-    id         VARCHAR(255) PRIMARY KEY,
+    id         INT PRIMARY KEY AUTO_INCREMENT,
     user_id    INT,
     spot_id    INT,
     created_at timestamp    NOT NULL default CURRENT_TIMESTAMP,

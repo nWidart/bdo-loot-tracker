@@ -2,6 +2,7 @@ package com.bdoloottracker.run.service;
 
 import com.bdoloottracker.run.entity.Session;
 import com.bdoloottracker.run.repository.SessionRepository;
+import com.bdoloottracker.run.request.CreateSessionRequest;
 import com.bdoloottracker.run.security.SimpleLoginUser;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -17,5 +18,11 @@ public class SessionService {
 
   public List<Session> findAllFor(SimpleLoginUser user) {
     return sessionRepository.findAllByUserId(user.getUser().getId().intValue());
+  }
+
+  public Session store(CreateSessionRequest request) {
+    Session session = request.toModel();
+
+    return sessionRepository.save(session);
   }
 }
