@@ -5,7 +5,7 @@ import { models } from '../../app/store';
 import { connect } from 'react-redux';
 
 const NavigationBar = ({ user }: any) => (
-  <nav className="bg-white shadow" role="navigation">
+  <nav className="bg-white shadow mb-4" role="navigation">
     <div className="container mx-auto p-4 flex flex-wrap items-center md:flex-no-wrap">
       <div className="mr-4 md:mr-8">
         <Link to="/">BDO Loot Tracker</Link>

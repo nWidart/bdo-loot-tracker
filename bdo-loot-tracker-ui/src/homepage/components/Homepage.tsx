@@ -1,5 +1,7 @@
 import * as React from 'react';
 
 export function Homepage() {
-  return <h1>Homepage!</h1>;
+  return <div className="w-full bg-white shadow rounded py-10 px-5">
+    <h1>Homepage!</h1>
+  </div>;
 }
