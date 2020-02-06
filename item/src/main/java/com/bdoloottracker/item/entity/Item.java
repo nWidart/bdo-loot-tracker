@@ -28,4 +28,5 @@ public class Item {
   private boolean isTaxable;
   @Column(name = "bdodatabase_id")
   private Integer bdoDatabaseId;
+  private Long price;
 }
