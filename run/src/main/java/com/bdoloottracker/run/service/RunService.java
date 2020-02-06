@@ -1,6 +1,7 @@
 package com.bdoloottracker.run.service;
 
 import com.bdoloottracker.run.client.PriceServiceClient;
+import com.bdoloottracker.run.dto.ItemPrice;
 import com.bdoloottracker.run.entity.Run;
 import com.bdoloottracker.run.entity.RunDrop;
 import com.bdoloottracker.run.repository.RunDropRepository;
@@ -39,8 +40,8 @@ public class RunService {
       runDrop.setItemId(itemDropMap.getItemId());
       runDrop.setTotal(itemDropMap.getTotal());
       runDrop.setRun(persistedRun);
-      runDrop
-          .setCurrentPrice(BigDecimal.valueOf(priceServiceClient.getPriceForItem("eu", "11072", jwt).getPricePerOne()));
+      ItemPrice itemPrice = priceServiceClient.getPriceForItem("eu", itemDropMap.getItemId().toString(), jwt);
+      runDrop.setCurrentPrice(BigDecimal.valueOf(itemPrice.getPricePerOne()));
       runDropMap.add(runDrop);
     });
     runDropRepository.saveAll(runDropMap);
