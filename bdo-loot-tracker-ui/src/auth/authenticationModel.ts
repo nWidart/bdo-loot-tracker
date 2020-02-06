@@ -2,7 +2,14 @@ import { createModel } from '@rematch/core';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-export type AuthenticationState = any;
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  isAdmin: boolean;
+}
+
+export type AuthenticationState = { user: User, token: string };
 export const authentication = createModel<AuthenticationState>({
   state: {
     token: '',
@@ -31,6 +38,18 @@ export const authentication = createModel<AuthenticationState>({
     async getCurrentUser() {
       const response = await axios.get('http://localhost:8081/api/me');
       dispatch.authentication.setCurrentUser(response.data);
-    }
+    },
+    async checkCookie(payload, rootState) {
+      const token = Cookies.get('jwtToken');
+      if (token === undefined || token === 'undefined') {
+        return;
+      }
+      if (rootState.authentication.token !== '') {
+        return;
+      }
+      const response = await axios.get('http://localhost:8081/api/me');
+      dispatch.authentication.setCurrentUser(response.data);
+      dispatch.authentication.setJwtToken({ token });
+    },
   })
 });
