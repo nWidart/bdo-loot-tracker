@@ -1,7 +1,6 @@
 package com.bdoloottracker.item.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,8 +25,8 @@ public class LootTable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne
   private Item item;
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne
   private Spot spot;
 }

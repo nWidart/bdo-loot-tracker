@@ -66,4 +66,8 @@ public class LootTableService {
       return true;
     }).orElse(false);
   }
+
+  public List<LootTable> allForSpot(Long spotId) {
+    return lootTableRepository.findAllBySpotId(spotId);
+  }
 }
