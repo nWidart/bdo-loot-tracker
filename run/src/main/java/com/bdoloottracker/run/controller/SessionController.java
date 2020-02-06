@@ -2,8 +2,8 @@ package com.bdoloottracker.run.controller;
 
 import com.bdoloottracker.run.entity.Session;
 import com.bdoloottracker.run.request.CreateSessionRequest;
-import com.bdoloottracker.run.security.SimpleLoginUser;
 import com.bdoloottracker.run.service.SessionService;
+import com.bdoloottracker.securitystarter.SimpleLoginUser;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.http.HttpStatus;

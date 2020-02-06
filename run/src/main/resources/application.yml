@@ -49,7 +49,3 @@ eureka:
   instance:
     instance-id: ${spring.application.name}:${random.int}
     hostname: localhost
-
-security:
-  secret-key: GkD0wnqHaN6y5peyf0
-

@@ -3,7 +3,7 @@ package com.bdoloottracker.run.service;
 import com.bdoloottracker.run.entity.Session;
 import com.bdoloottracker.run.repository.SessionRepository;
 import com.bdoloottracker.run.request.CreateSessionRequest;
-import com.bdoloottracker.run.security.SimpleLoginUser;
+import com.bdoloottracker.securitystarter.SimpleLoginUser;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
