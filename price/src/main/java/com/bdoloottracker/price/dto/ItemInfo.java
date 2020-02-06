@@ -13,10 +13,10 @@ public class ItemInfo {
   private String itemId;
   private String enhancementLevel;
 
-  public static ItemInfo of(String region, String itemId, String enhancementLevel) {
+  public static ItemInfo of(String region, String itemId) {
     Assert.notNull(region, "Region is required");
     Assert.notNull(itemId, "Item ID is required");
 
-    return new ItemInfo(region, itemId, enhancementLevel);
+    return new ItemInfo(region, itemId, null);
   }
 }
