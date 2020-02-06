@@ -1,7 +1,7 @@
-package com.bdoloottracker.price.security;
+package com.bdoloottracker.securitystarter;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,15 +17,20 @@ import org.springframework.web.filter.GenericFilterBean;
 @Configuration
 public class SecurityBeans {
 
-  @Value("${security.secret-key:secret}")
-  private String secretKey = "secret";
+  private final SecurityProperties securityProperties;
+
+  public SecurityBeans(SecurityProperties securityProperties) {
+    this.securityProperties = securityProperties;
+  }
 
   @Bean
+  @ConditionalOnMissingBean
   public RestTemplate restTemplate() {
     return new RestTemplateBuilder().build();
   }
 
   @Bean
+  @ConditionalOnMissingBean
   PasswordEncoder passwordEncoder() {
     return PasswordEncoderFactories.createDelegatingPasswordEncoder();
   }
@@ -37,7 +42,7 @@ public class SecurityBeans {
 
   @Bean
   GenericFilterBean tokenFilter() {
-    return new SimpleTokenFilter(restTemplate(), secretKey);
+    return new SimpleTokenFilter(restTemplate(), this.securityProperties.getSecretKey());
   }
 
   @Bean
@@ -52,7 +57,7 @@ public class SecurityBeans {
 
   @Bean
   TokenService tokenService() {
-    return new TokenService(secretKey);
+    return new TokenService(this.securityProperties.getSecretKey());
   }
 
   @Autowired

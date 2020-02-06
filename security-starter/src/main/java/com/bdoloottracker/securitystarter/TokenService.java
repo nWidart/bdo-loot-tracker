@@ -1,4 +1,4 @@
-package com.bdoloottracker.price.security;
+package com.bdoloottracker.securitystarter;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

@@ -1,4 +1,4 @@
-package com.bdoloottracker.price.security;
+package com.bdoloottracker.securitystarter;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

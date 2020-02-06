@@ -1,4 +1,4 @@
-package com.bdoloottracker.price.security;
+package com.bdoloottracker.securitystarter;
 
 import java.util.List;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,4 +1,4 @@
-package com.bdoloottracker.price.security;
+package com.bdoloottracker.securitystarter;
 
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;

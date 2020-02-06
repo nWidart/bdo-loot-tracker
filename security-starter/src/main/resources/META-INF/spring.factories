@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.bdoloottracker.securitystarter.SecurityProperties,\
+  com.bdoloottracker.securitystarter.SecurityBeans
