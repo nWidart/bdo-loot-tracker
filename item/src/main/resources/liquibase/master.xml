@@ -9,4 +9,6 @@
     relativeToChangelogFile="true"/>
   <include file="changelog-003-create-loot_tables-table.sql"
     relativeToChangelogFile="true"/>
+  <include file="item-service-changelog-004-add-bdodb-id-to-items.sql"
+    relativeToChangelogFile="true"/>
 </databaseChangeLog>

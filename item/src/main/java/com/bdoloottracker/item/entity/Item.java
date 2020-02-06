@@ -26,4 +26,6 @@ public class Item {
   private String name;
   @Column(name = "is_taxable", nullable = false)
   private boolean isTaxable;
+  @Column(name = "bdodatabase_id")
+  private Integer bdoDatabaseId;
 }
