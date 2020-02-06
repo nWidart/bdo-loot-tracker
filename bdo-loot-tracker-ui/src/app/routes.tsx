@@ -2,6 +2,7 @@ import * as React from 'react';
 import SpotListContainer from '../spots/components/SpotListContainer';
 import LoginForm from '../auth/components/LoginForm';
 import { Homepage } from '../homepage/components/Homepage';
+import LogoutComponent from '../auth/components/LogoutComponent';
 
 const routes = {
   homepage: {
@@ -18,7 +19,12 @@ const routes = {
     path: '/login',
     exact: true,
     component: () => <LoginForm/>
-  }
+  },
+  logout: {
+    path: '/logout',
+    exact: true,
+    component: () => <LogoutComponent/>,
+  },
 };
 
 export { routes };

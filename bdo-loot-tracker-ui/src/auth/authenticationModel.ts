@@ -28,7 +28,14 @@ export const authentication = createModel<AuthenticationState>({
         ...state,
         user: payload,
       };
-    }
+    },
+    logout: () => {
+      Cookies.remove('jwtToken');
+      return {
+        token: '',
+        user: undefined,
+      };
+    },
   },
   effects: dispatch => ({
     async login(payload) {
