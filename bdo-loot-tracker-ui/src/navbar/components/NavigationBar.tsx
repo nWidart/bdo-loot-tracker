@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { RematchRootState } from '@rematch/core';
+import { models } from '../../app/store';
+import { connect } from 'react-redux';
 
-const NavigationBar = () => (
+const NavigationBar = ({ user }: any) => (
   <nav className="bg-white shadow" role="navigation">
     <div className="container mx-auto p-4 flex flex-wrap items-center md:flex-no-wrap">
       <div className="mr-4 md:mr-8">
@@ -21,15 +24,25 @@ const NavigationBar = () => (
           <li>
             <Link to="/spots" className="block px-4 py-1 md:p-2 lg:px-4 text-purple-600">Spots</Link>
           </li>
-          <li>
-            <Link to="/login" className="block px-4 py-1 md:p-2 lg:px-4">Login</Link>
-          </li>
-          <li>
-            <a className="block px-4 py-1 md:p-2 lg:px-4" href="/logout" title="Link">Logout</a>
-          </li>
+          {user === undefined && (
+            <li>
+              <Link to="/login" className="block px-4 py-1 md:p-2 lg:px-4">Login</Link>
+            </li>
+          )}
+          {user !== undefined && (
+            <li>
+              <a className="block px-4 py-1 md:p-2 lg:px-4" href="/logout" title="Link">Logout</a>
+            </li>
+          )}
+
         </ul>
       </div>
     </div>
   </nav>
 );
-export default NavigationBar;
+
+const mapStateToProps = (state: RematchRootState<models>) => ({
+  user: state.authentication.user,
+});
+
+export default connect(mapStateToProps as any)(NavigationBar);
