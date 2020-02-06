@@ -5,4 +5,6 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
   <include file="run-service-changelog-001-create-sessions-table.sql"
     relativeToChangelogFile="true"/>
+  <include file="run-service-changelog-002-create-runs-table.sql"
+    relativeToChangelogFile="true"/>
 </databaseChangeLog>
