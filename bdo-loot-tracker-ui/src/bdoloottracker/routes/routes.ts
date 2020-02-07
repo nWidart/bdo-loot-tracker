@@ -1,6 +1,7 @@
 import SpotListContainer from '../spots/components/SpotListContainer';
 import CreateSessionComponent from '../sessions/components/CreateSessionComponent';
 import BdoLootTrackerRoutes from './BdoLootTrackerRoutes';
+import SessionList from '../sessions/components/SessionList';
 
 const routes = {
   bdoLootTracker: {
@@ -17,6 +18,11 @@ const routes = {
         path: '/app/session/new',
         exact: true,
         component: CreateSessionComponent,
+      },
+      sessionList: {
+        path: '/app/sessions',
+        exact: true,
+        component: SessionList,
       },
     }
   }

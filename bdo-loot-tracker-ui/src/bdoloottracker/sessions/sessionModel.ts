@@ -2,7 +2,10 @@ import { createModel } from '@rematch/core';
 import axios from 'axios';
 import { Session } from './model';
 
-export type SessionState = Session[];
+interface SessionState {
+  sessions: Session[];
+  currentSession: Session;
+}
 export const sessions = createModel<SessionState>({
   state: [],
   reducers: {
@@ -22,7 +25,7 @@ export const sessions = createModel<SessionState>({
   effects: dispatch => ({
     async getSessions() {
       const response = await axios.get('/api/run/sessions');
-      dispatch.spots.setSessions(response.data);
+      dispatch.sessions.setSessions(response.data);
     },
     async createSession(payload) {
       const response = await axios.post('/api/run/sessions', payload);
