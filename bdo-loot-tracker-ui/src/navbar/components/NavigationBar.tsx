@@ -17,7 +17,7 @@ const NavigationBar = ({ user }: any) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="pull-right" navbar>
             <NavItem>
-              <Link to="/spots" className="nav-link">Spots</Link>
+              <Link to="/app/spots" className="nav-link">Spots</Link>
             </NavItem>
             {user === undefined && (
               <NavItem>

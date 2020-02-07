@@ -1,4 +1,4 @@
-import { createModel } from "@rematch/core";
+import { createModel } from '@rematch/core';
 import axios from 'axios';
 import { Spot } from './model';
 

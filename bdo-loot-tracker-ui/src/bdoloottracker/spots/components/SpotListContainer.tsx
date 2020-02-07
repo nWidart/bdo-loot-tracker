@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RematchDispatch, RematchRootState } from '@rematch/core';
-import { models } from '../../app/store';
+import { models } from '../../../app/store';
 import { connect } from 'react-redux';
 import { Spot } from '../model';
 
@@ -11,6 +11,7 @@ interface SpotListContainerProps {
 
 class SpotListContainer extends React.Component<any> {
   componentDidMount() {
+    console.log('SpotListContainer');
     this.props.getSpots();
   }
 
