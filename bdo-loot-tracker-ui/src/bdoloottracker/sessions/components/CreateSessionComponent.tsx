@@ -3,6 +3,7 @@ import CreateSessionForm from './CreateSessionForm';
 import { RematchDispatch, RematchRootState } from '@rematch/core';
 import { models } from '../../../app/store';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 class CreateSessionComponent extends React.Component<any> {
   componentDidMount() {
@@ -14,25 +15,26 @@ class CreateSessionComponent extends React.Component<any> {
       ...payload,
       userId: this.props.user.id,
     });
-    alert('session created');
   };
 
   render() {
-    return <>
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <h4>Start a new session</h4>
-            <CreateSessionForm handleSubmit={this.handleSubmit}/>
-          </div>
+    if (this.props.currentSession) {
+      return <Redirect to="/app/sessions"/>;
+    }
+    return <div className="container">
+      <div className="row">
+        <div className="col">
+          <h4>Start a new session</h4>
+          <CreateSessionForm handleSubmit={this.handleSubmit}/>
         </div>
       </div>
-    </>;
+    </div>;
   }
 }
 
 const mapStateToProps = (state: RematchRootState<models>) => ({
   user: state.authentication.user,
+  currentSession: state.sessions.currentSession,
 });
 
 const mapDispatchToProps = (dispatch: RematchDispatch<models>) => ({
