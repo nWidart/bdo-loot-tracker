@@ -25,7 +25,6 @@ export const sessions = createModel<SessionState>({
       dispatch.spots.setSessions(response.data);
     },
     async createSession(payload) {
-      console.log(payload);
       const response = await axios.post('/api/run/sessions', payload);
       dispatch.sessions.setCurrentSession(response.data);
     },
