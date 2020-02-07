@@ -1,5 +1,5 @@
 import SpotListContainer from '../spots/components/SpotListContainer';
-import { CreateSessionComponent } from '../sessions/components/CreateSessionComponent';
+import CreateSessionComponent from '../sessions/components/CreateSessionComponent';
 import BdoLootTrackerRoutes from './BdoLootTrackerRoutes';
 
 const routes = {
@@ -14,7 +14,7 @@ const routes = {
         component: SpotListContainer,
       },
       createSession: {
-        path: '/app/session/create',
+        path: '/app/session/new',
         exact: true,
         component: CreateSessionComponent,
       },

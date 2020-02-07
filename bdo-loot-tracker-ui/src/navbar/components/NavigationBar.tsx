@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { RematchRootState } from '@rematch/core';
 import { models } from '../../app/store';
 import { connect } from 'react-redux';
-import { Collapse, Nav, Navbar, NavbarToggler, NavItem } from 'reactstrap';
+import { Button, Collapse, Nav, Navbar, NavbarToggler, NavItem } from 'reactstrap';
 
 const NavigationBar = ({ user }: any) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +32,11 @@ const NavigationBar = ({ user }: any) => {
           </Nav>
         </Collapse>
       </div>
+      {user !== undefined && (
+        <Link to="/app/session/new">
+          <Button color="primary">Start session</Button>
+        </Link>
+      )}
     </div>
   </Navbar>);
 };

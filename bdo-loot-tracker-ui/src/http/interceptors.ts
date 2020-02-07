@@ -14,7 +14,9 @@ axios.interceptors.response.use((response) => {
   return response;
 }, (error) => {
   if (error && error.response && error.response.status) {
-    window.location.assign('/login');
+    if (error.response.status === 401 || error.response.status === 403) {
+      window.location.assign('/login');
+    }
   }
   return Promise.reject(error);
 });

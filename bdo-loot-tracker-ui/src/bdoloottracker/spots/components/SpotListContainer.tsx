@@ -11,7 +11,6 @@ interface SpotListContainerProps {
 
 class SpotListContainer extends React.Component<any> {
   componentDidMount() {
-    console.log('SpotListContainer');
     this.props.getSpots();
   }
 
