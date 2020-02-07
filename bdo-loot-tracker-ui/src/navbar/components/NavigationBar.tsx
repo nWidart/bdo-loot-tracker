@@ -19,6 +19,9 @@ const NavigationBar = ({ user }: any) => {
             <NavItem>
               <Link to="/app/spots" className="nav-link">Spots</Link>
             </NavItem>
+            <NavItem>
+              <Link to="/app/sessions" className="nav-link">Sessions</Link>
+            </NavItem>
             {user === undefined && (
               <NavItem>
                 <Link to="/login" className="nav-link">Login</Link>
