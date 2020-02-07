@@ -16,13 +16,17 @@ class SpotListContainer extends React.Component<any> {
 
   render() {
     return (
-      <div className="w-1/2 h-12">
-        <ul>
-          {
-            this.props.spots && this.props.spots.map((spot: Spot) => (
-              <li key={spot.id}>{spot.name}</li>
-            ))}
-        </ul>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <ul>
+              {
+                this.props.spots && this.props.spots.map((spot: Spot) => (
+                  <li key={spot.id}>{spot.name}</li>
+                ))}
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }
