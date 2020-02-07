@@ -10,11 +10,7 @@ const App: React.FC = () => {
       <InitWrapper>
         <NavigationBar/>
       </InitWrapper>
-      <div className="container mx-auto">
-        <div className="flex mb-4">
-          <Content routes={routes}/>
-        </div>
-      </div>
+      <Content routes={routes}/>
     </>
   );
 };
