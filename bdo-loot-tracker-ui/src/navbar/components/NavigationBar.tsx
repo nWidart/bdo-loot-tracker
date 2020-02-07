@@ -34,7 +34,7 @@ const NavigationBar = ({ user }: any) => {
       </div>
       {user !== undefined && (
         <Link to="/app/session/new">
-          <Button color="primary">Start session</Button>
+          <Button color="secondary">Start session</Button>
         </Link>
       )}
     </div>
