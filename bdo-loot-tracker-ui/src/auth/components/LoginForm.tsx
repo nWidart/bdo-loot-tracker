@@ -19,7 +19,7 @@ class LoginForm extends React.Component<any, LoginFormState> {
     };
   }
 
-  updateUsername = (event: React.FormEvent<HTMLInputElement>) => {
+  updateField = (event: React.FormEvent<HTMLInputElement>) => {
     const value = event.currentTarget.id as 'username';
     this.setState({ [value]: event.currentTarget.value });
   };
@@ -45,7 +45,7 @@ class LoginForm extends React.Component<any, LoginFormState> {
                        id="email" aria-describedby="emailHelp"
                        value={this.state.username}
                        placeholder="Username"
-                       onChange={this.updateUsername}/>
+                       onChange={this.updateField}/>
               </div>
               <div className="form-group">
                 <label htmlFor="password">Password</label>
@@ -53,7 +53,7 @@ class LoginForm extends React.Component<any, LoginFormState> {
                        className="form-control"
                        id="password"
                        value={this.state.password}
-                       onChange={this.updateUsername}/>
+                       onChange={this.updateField}/>
               </div>
               <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
             </form>
