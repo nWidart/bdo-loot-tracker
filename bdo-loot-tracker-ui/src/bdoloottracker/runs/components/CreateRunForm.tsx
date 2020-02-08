@@ -10,25 +10,25 @@ import { LootTable } from '../../loottables/model';
 interface CreateRunFormProps {
   handleSubmit: (payload: any) => void;
   handleDropChange: (itemId: any, count: any) => void;
-  lootTables: LootTable[];
+  lootTable: LootTable;
 }
 
 const CreateRunForm = (props: CreateRunFormProps) => {
   const [comment, setComment] = useState();
-  const { handleSubmit, lootTables, handleDropChange } = props;
+  const { handleSubmit, lootTable, handleDropChange } = props;
 
   return <Form>
     <div className="row">
       <div className="col-8">
-        {lootTables && lootTables.map((lootTable) => (
-          <FormGroup row className="bg-light" key={lootTable.item.id}>
-            <Label for={camelCase(lootTable.item.name)}
-                   className="col-sm-8 col-form-label">{lootTable.item.name}</Label>
+        {lootTable && lootTable.items.map((item) => (
+          <FormGroup row className="bg-light" key={item.itemId}>
+            <Label for={camelCase(item.name)}
+                   className="col-sm-8 col-form-label">{item.name}</Label>
             <div className="col-sm-4">
               <Input type="number"
-                     name={lootTable.item.id.toString()}
-                     id={camelCase(lootTable.item.name)}
-                     onChange={(event => handleDropChange(lootTable.item.id, event.target.value))}
+                     name={item.itemId.toString()}
+                     id={camelCase(item.name)}
+                     onChange={(event => handleDropChange(item.itemId, event.target.value))}
               />
             </div>
           </FormGroup>
@@ -48,7 +48,7 @@ const CreateRunForm = (props: CreateRunFormProps) => {
 };
 
 const mapStateToProps = (state: RematchRootState<models>) => ({
-  lootTables: state.lootTables.lootTable,
+  lootTable: state.lootTables.lootTable,
 });
 
 export default connect(mapStateToProps)(CreateRunForm);

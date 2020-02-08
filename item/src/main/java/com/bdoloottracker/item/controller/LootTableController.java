@@ -1,10 +1,10 @@
 package com.bdoloottracker.item.controller;
 
+import com.bdoloottracker.item.dto.LootTableProjection;
 import com.bdoloottracker.item.entity.LootTable;
 import com.bdoloottracker.item.request.CreateLootTableRequest;
 import com.bdoloottracker.item.request.UpdateLootTableRequest;
 import com.bdoloottracker.item.service.LootTableService;
-import java.util.List;
 import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,7 +29,7 @@ public class LootTableController {
   }
 
   @GetMapping("/loot-tables")
-  public List<LootTable> index(@RequestParam(value = "spotId", required = false) Long spotId) {
+  public LootTableProjection index(@RequestParam(value = "spotId", required = false) Long spotId) {
     if (spotId != null) {
       return lootTableService.allForSpot(spotId);
     }

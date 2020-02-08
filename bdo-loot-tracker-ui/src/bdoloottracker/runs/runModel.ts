@@ -3,6 +3,7 @@ import axios from 'axios';
 import { SaveRunPayload } from './model';
 
 export interface RunState {
+  runs: [];
 }
 
 export const runs = createModel<RunState>({

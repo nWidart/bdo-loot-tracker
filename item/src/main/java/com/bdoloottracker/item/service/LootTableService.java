@@ -2,6 +2,7 @@ package com.bdoloottracker.item.service;
 
 import static com.bdoloottracker.item.utils.BeanUtils.copyNonNullProperties;
 
+import com.bdoloottracker.item.dto.LootTableProjection;
 import com.bdoloottracker.item.entity.Item;
 import com.bdoloottracker.item.entity.LootTable;
 import com.bdoloottracker.item.entity.Spot;
@@ -28,8 +29,8 @@ public class LootTableService {
     this.spotRepository = spotRepository;
   }
 
-  public List<LootTable> all() {
-    return lootTableRepository.findAll();
+  public LootTableProjection all() {
+    return mapToProjection(lootTableRepository.findAll());
   }
 
   public Optional<LootTable> findById(Long lootTableId) {
@@ -67,7 +68,18 @@ public class LootTableService {
     }).orElse(false);
   }
 
-  public List<LootTable> allForSpot(Long spotId) {
-    return lootTableRepository.findAllBySpotId(spotId);
+  public LootTableProjection allForSpot(Long spotId) {
+    return mapToProjection(lootTableRepository.findAllBySpotId(spotId));
+  }
+
+  private LootTableProjection mapToProjection(List<LootTable> lootTables) {
+    LootTableProjection projection = new LootTableProjection();
+    lootTables.forEach(lootTable -> {
+      projection.setSpotId(lootTable.getSpot().getId());
+      LootTableProjection.Item e = new LootTableProjection.Item(lootTable.getItem().getId(),
+          lootTable.getItem().getName());
+      projection.getItems().add(e);
+    });
+    return projection;
   }
 }
