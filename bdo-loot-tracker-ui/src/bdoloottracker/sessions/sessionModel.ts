@@ -31,5 +31,9 @@ export const sessions = createModel<SessionState>({
       const response = await axios.post('/api/run/sessions', payload);
       dispatch.sessions.setCurrentSession(response.data);
     },
+    async findSessionById(sessionId) {
+      const response = await axios.get(`/api/run/sessions/${sessionId}`);
+      return dispatch.sessions.setCurrentSession(response.data);
+    }
   })
 });
