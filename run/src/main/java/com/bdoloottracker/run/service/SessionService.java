@@ -5,6 +5,7 @@ import com.bdoloottracker.run.repository.SessionRepository;
 import com.bdoloottracker.run.request.CreateSessionRequest;
 import com.bdoloottracker.securitystarter.SimpleLoginUser;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,5 +25,9 @@ public class SessionService {
     Session session = request.toModel();
 
     return sessionRepository.save(session);
+  }
+
+  public Optional<Session> findById(Long sessionId) {
+    return sessionRepository.findById(sessionId);
   }
 }

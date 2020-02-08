@@ -1,6 +1,7 @@
 package com.bdoloottracker.run.controller;
 
 import com.bdoloottracker.run.entity.Session;
+import com.bdoloottracker.run.exception.SessionNotFoundException;
 import com.bdoloottracker.run.request.CreateSessionRequest;
 import com.bdoloottracker.run.service.SessionService;
 import com.bdoloottracker.securitystarter.SimpleLoginUser;
@@ -9,6 +10,7 @@ import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,5 +36,10 @@ public class SessionController {
   @ResponseStatus(code = HttpStatus.CREATED)
   public Session create(@RequestBody @Valid CreateSessionRequest request) {
     return sessionService.store(request);
+  }
+
+  @GetMapping("sessions/{sessionId}")
+  public Session show(@PathVariable Long sessionId) {
+    return sessionService.findById(sessionId).orElseThrow(SessionNotFoundException::new);
   }
 }
