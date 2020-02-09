@@ -72,6 +72,24 @@ public class RunService {
     return runProjection;
   }
 
+  public List<RunProjection> findAllBySession(Long sessionId, String jwt) {
+    List<Run> runs = runRepository.findAllBySessionId(sessionId);
+
+    List<RunProjection> runProjections = new ArrayList<>();
+    for (Run run : runs) {
+      List<SimpleRunDropProjection> runDrops = runDropRepository.findAllByRun(run);
+      LootTableProjection projection = itemServiceClient.getLootTableInfoForSpot(sessionId.toString(), jwt);
+      RunProjection runProjection = new RunProjection();
+      runProjection.setRunId(run.getId());
+      runProjection.setComment(run.getComment());
+      runProjection.setCreatedAt(run.getCreatedAt());
+      runProjection.setRunDrops(this.hydrateItemNamesTo(projection, runDrops));
+      runProjections.add(runProjection);
+    }
+
+    return runProjections;
+  }
+
   private List<RunProjection.RunDrop> hydrateItemNamesTo(LootTableProjection projection,
       List<SimpleRunDropProjection> runDrops) {
     List<RunProjection.RunDrop> runDropList = new ArrayList<>();

@@ -3,6 +3,7 @@ package com.bdoloottracker.run.controller;
 import com.bdoloottracker.run.dto.RunProjection;
 import com.bdoloottracker.run.request.CreateRunRequest;
 import com.bdoloottracker.run.service.RunService;
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,5 +33,10 @@ public class RunController {
   @GetMapping("runs/{runId}")
   public RunProjection show(@PathVariable Long runId, @RequestHeader("Authorization") String jwt) {
     return this.runService.findRun(runId, jwt);
+  }
+
+  @GetMapping("runs/by-session/{sessionId}")
+  public List<RunProjection> findBySession(@PathVariable Long sessionId, @RequestHeader("Authorization") String jwt) {
+    return this.runService.findAllBySession(sessionId, jwt);
   }
 }
