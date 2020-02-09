@@ -3,6 +3,7 @@ import CreateSessionComponent from '../sessions/components/CreateSessionComponen
 import BdoLootTrackerRoutes from './BdoLootTrackerRoutes';
 import SessionList from '../sessions/components/SessionList';
 import CreateRunComponent from '../runs/components/CreateRunComponent';
+import RunList from '../runs/components/RunList';
 
 const routes = {
   bdoLootTracker: {
@@ -29,7 +30,12 @@ const routes = {
         path: '/app/session/:sessionId/run/new',
         exact: true,
         component: CreateRunComponent,
-      }
+      },
+      viewRun: {
+        path: '/app/session/:sessionId/runs',
+        exact: true,
+        component: RunList,
+      },
     }
   }
 };

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { RematchDispatch, RematchRootState } from '@rematch/core';
 import { models } from '../../../app/store';
 import { Session } from '../model';
+import { Link } from 'react-router-dom';
 
 class SessionList extends React.Component<any> {
   componentDidMount() {
@@ -24,6 +25,7 @@ class SessionList extends React.Component<any> {
                 <th scope="col">Ap</th>
                 <th scope="col">Dp</th>
                 <th scope="col">Class</th>
+                <th></th>
               </tr>
               </thead>
               <tbody>
@@ -35,6 +37,16 @@ class SessionList extends React.Component<any> {
                   <td>{session.ap}</td>
                   <td>{session.dp}</td>
                   <td>{session.bdoClass}</td>
+                  <td>
+                    <div className="btn-group float-right">
+                      <Link to={`/app/session/${session.id}/run/new`} className="btn btn-primary btn-sm">
+                        Add run
+                      </Link>
+                      <Link to={`/app/session/${session.id}/runs`} className="btn btn-secondary btn-sm">
+                        View runs
+                      </Link>
+                    </div>
+                  </td>
                 </tr>
               ))}
               </tbody>
