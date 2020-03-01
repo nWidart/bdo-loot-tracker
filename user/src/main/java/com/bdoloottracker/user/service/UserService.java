@@ -40,14 +40,20 @@ public class UserService {
     return userRepository.findById(userId);
   }
 
-  public void register(RegisterUserRequest request) {
-    String encodedPassword = this.passwordEncoder.encode(request.getPassword());
-    User user = User.builder()
+  public boolean existsByEmail(String email) {
+    return this.userRepository.existsByEmail(email);
+  }
+
+  public User createUser(RegisterUserRequest request) {
+    return User.builder()
         .email(request.getEmail())
         .name(request.getName())
-        .password(encodedPassword)
+        .password(this.passwordEncoder.encode(request.getPassword()))
         .isAdmin(false)
         .build();
-    this.userRepository.save(user);
+  }
+
+  public User save(User user) {
+    return this.userRepository.save(user);
   }
 }

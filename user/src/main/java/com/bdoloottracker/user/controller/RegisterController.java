@@ -1,7 +1,8 @@
 package com.bdoloottracker.user.controller;
 
+import com.bdoloottracker.user.dto.ApiResponse;
 import com.bdoloottracker.user.request.RegisterUserRequest;
-import com.bdoloottracker.user.service.UserService;
+import com.bdoloottracker.user.service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,17 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/public/api/register")
 public class RegisterController {
 
-  private final UserService userService;
+  private final AuthService authService;
 
-  public RegisterController(UserService userService) {
-    this.userService = userService;
+  public RegisterController(AuthService authService) {
+    this.authService = authService;
   }
 
   @PostMapping
   @CrossOrigin("*")
-  public ResponseEntity<String> register(@RequestBody RegisterUserRequest request) {
-    this.userService.register(request);
+  public ResponseEntity<ApiResponse> register(@RequestBody RegisterUserRequest request) {
+    this.authService.registerUser(request);
 
-    return ResponseEntity.ok("Register completed. You may now login");
+    return ResponseEntity.ok(new ApiResponse(true, "Register completed. You may now login"));
   }
 }
