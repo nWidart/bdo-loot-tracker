@@ -29,7 +29,6 @@ public class SpotController {
   }
 
   @GetMapping("/spots")
-  @CrossOrigin("*")
   public List<Spot> index() {
     return spotService.all();
   }
