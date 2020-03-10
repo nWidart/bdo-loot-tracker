@@ -18,10 +18,10 @@ export const runs = createModel<RunState>({
   },
   effects: dispatch => ({
     async saveRun(payload: SaveRunPayload) {
-      const response = await axios.post('/api/run/runs', payload);
+      await axios.post('http://localhost:8080/api/run/runs', payload);
     },
     async getRunsForSession(payload: any) {
-      const response = await axios.get(`/api/run/runs/by-session/${payload}`);
+      const response = await axios.get(`http://localhost:8080/api/run/runs/by-session/${payload}`);
       dispatch.runs.setRuns(response.data);
     },
   })
