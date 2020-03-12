@@ -17,7 +17,7 @@ export const lootTables = createModel<LootTableState>({
   },
   effects: dispatch => ({
     async getLootTableForSpot(spotId: any) {
-      const response = await axios.get(`/api/loot-table/loot-tables?spotId=${spotId}`);
+      const response = await axios.get(`http://localhost:8080/api/loot-table/loot-tables?spotId=${spotId}`);
       dispatch.lootTables.setLootTable(response.data);
     }
   })
