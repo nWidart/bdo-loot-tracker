@@ -14,7 +14,7 @@ export const spots = createModel<SpotState>({
   },
   effects: dispatch => ({
     async getSpots() {
-      const response = await axios.get('http://localhost:8080/api/spot/spots');
+      const response = await axios.get(process.env.REACT_APP_API_GATEWAY_BASE_URL + '/api/spot/spots');
       dispatch.spots.setSpots(response.data);
     }
   })

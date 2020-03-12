@@ -39,11 +39,11 @@ export const authentication = createModel<AuthenticationState>({
   },
   effects: dispatch => ({
     async login(payload) {
-      const response = await axios.post('http://localhost:8081/authenticate', payload);
+      const response = await axios.post(process.env.REACT_APP_AUTH_BASE_URL + '/authenticate', payload);
       dispatch.authentication.setJwtToken(response.data);
     },
     async getCurrentUser() {
-      const response = await axios.get('http://localhost:8081/api/me');
+      const response = await axios.get(process.env.REACT_APP_AUTH_BASE_URL + '/api/me');
       dispatch.authentication.setCurrentUser(response.data);
     },
     async checkCookie(payload, rootState) {
@@ -54,7 +54,7 @@ export const authentication = createModel<AuthenticationState>({
       if (rootState.authentication.token !== '') {
         return;
       }
-      const response = await axios.get('http://localhost:8081/api/me');
+      const response = await axios.get(process.env.REACT_APP_AUTH_BASE_URL + '/api/me');
       dispatch.authentication.setCurrentUser(response.data);
       dispatch.authentication.setJwtToken({ token });
     },
