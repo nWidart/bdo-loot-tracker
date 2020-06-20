@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: eureka-server
+  labels:
+    {{- include "eureka-server-chart.labels" . | nindent 4 }}
+data:
+  application.yaml: |+
+    server:
+      port: 8762
+    spring:
+      application:
+        name: "eureka-server"
+    eureka:
+      instance:
+        hostname: localhost
+      client:
+        registerWithEureka: false
+        fetchRegistry: false
